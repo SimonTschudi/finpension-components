@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/Store';
-import { decrement, increment } from '../../store/features/counter/CounterSlice';
+import {
+    decrement,
+    increment,
+} from '../../store/features/counter/CounterSlice';
 import styles from './Counter.module.scss';
 
 export const Counter = () => {

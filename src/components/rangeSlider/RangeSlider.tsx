@@ -9,13 +9,25 @@ export type RangeSliderProps = InputHTMLAttributes<HTMLInputElement> & {
     onChange: (value: number) => void;
 };
 
-export const RangeSlider = ({ defaultValue, value, step = 1, onChange, className, ...rest }: RangeSliderProps) => {
+export const RangeSlider = ({
+    defaultValue,
+    value,
+    step = 1,
+    onChange,
+    className,
+    ...rest
+}: RangeSliderProps) => {
     const { mergeClasses } = useStyles();
-    const [internalValue, setInternalValue] = useState(value || defaultValue || 0);
-    const onInternalChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(Number(e.target.value));
-        setInternalValue(Number(e.target.value));
-    }, [onChange]);
+    const [internalValue, setInternalValue] = useState(
+        value || defaultValue || 0
+    );
+    const onInternalChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            onChange(Number(e.target.value));
+            setInternalValue(Number(e.target.value));
+        },
+        [onChange]
+    );
 
     return (
         <input
@@ -24,8 +36,8 @@ export const RangeSlider = ({ defaultValue, value, step = 1, onChange, className
             type="range"
             step={step}
             className={mergeClasses(styles.rangeSlider, className)}
-            { ...rest }
+            {...rest}
             onChange={onInternalChange}
         />
     );
-}
+};

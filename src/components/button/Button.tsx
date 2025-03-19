@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import styles from './Button.module.scss';
-import { useStyles } from "@utils/Styles.utils";
+import { useStyles } from '@utils/Styles.utils';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     /**
@@ -13,8 +13,28 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
      * @default medium
      */
     size?: 'small' | 'medium' | 'large';
-}
-export const Button = ({ children, appearance = 'secondary', size = 'medium', onClick, className, ...rest }: PropsWithChildren<ButtonProps>) => {
+};
+export const Button = ({
+    children,
+    appearance = 'secondary',
+    size = 'medium',
+    onClick,
+    className,
+    ...rest
+}: PropsWithChildren<ButtonProps>) => {
     const { mergeClasses } = useStyles();
-    return <button className={mergeClasses(styles.button, styles[appearance], styles[size], className)} onClick={onClick} {...rest}>{children}</button>;
+    return (
+        <button
+            className={mergeClasses(
+                styles.button,
+                styles[appearance],
+                styles[size],
+                className
+            )}
+            onClick={onClick}
+            {...rest}
+        >
+            {children}
+        </button>
+    );
 };

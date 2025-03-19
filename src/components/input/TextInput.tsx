@@ -27,23 +27,57 @@ export type TextInputWithLabelProps = TextInputProps & {
     label: string;
 };
 
-export type TextInputWithoutLabelProps = TextInputProps & { 'aria-label': string, info?: never };
+export type TextInputWithoutLabelProps = TextInputProps & {
+    'aria-label': string;
+    info?: never;
+};
 
-export type TextInputWithHTMLForProps = TextInputProps & { htmlFor: LabelProps['htmlFor'], info?: never, label?: never };
+export type TextInputWithHTMLForProps = TextInputProps & {
+    htmlFor: LabelProps['htmlFor'];
+    info?: never;
+    label?: never;
+};
 
-export const TextInput = ({ label, id, type = 'text', className, info, validationError, prefix, suffix, ...rest }: TextInputWithLabelProps | TextInputWithoutLabelProps | TextInputWithHTMLForProps) => {
+export const TextInput = ({
+    label,
+    id,
+    type = 'text',
+    className,
+    info,
+    validationError,
+    prefix,
+    suffix,
+    ...rest
+}:
+    | TextInputWithLabelProps
+    | TextInputWithoutLabelProps
+    | TextInputWithHTMLForProps) => {
     const { mergeClasses } = useStyles();
     const genId = useId();
     const inputId = id || genId;
     return (
         <span className={mergeClasses(styles.inputWrapper, className)}>
-            {label && <Label htmlFor={inputId} info={info}>{label}</Label>}
+            {label && (
+                <Label htmlFor={inputId} info={info}>
+                    {label}
+                </Label>
+            )}
             <span className={styles.inputField}>
                 {prefix && <span className={styles.prefix}>{prefix}</span>}
-                <input id={inputId} type={type} className={styles.input} {...rest} />
+                <input
+                    id={inputId}
+                    type={type}
+                    className={styles.input}
+                    {...rest}
+                />
                 {suffix && <span className={styles.suffix}>{suffix}</span>}
             </span>
-            {validationError && <div className={styles.error}><b className={styles.icon}>!</b>{validationError}</div>}
+            {validationError && (
+                <div className={styles.error}>
+                    <b className={styles.icon}>!</b>
+                    {validationError}
+                </div>
+            )}
         </span>
     );
-}
+};
