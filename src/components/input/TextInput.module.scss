@@ -1,0 +1,62 @@
+.inputWrapper {
+    display: inline-flex;
+    flex-direction: column;
+
+    &:has(.input:invalid) {
+        & .error {
+            display: block;
+        }
+    }
+}
+
+.inputField {
+    border: 1px solid var(--colorBlack);
+    border-radius: var(--borderRadius);
+    padding: 0 0.5rem;
+    background-color: var(--colorWhite);
+    color: var(--colorBlack);
+    & .input {
+        border: none;
+        padding: 0.5rem;
+        outline: none;
+        background-color: var(--colorWhite);
+        color: var(--colorBlack);
+
+        &:invalid {
+            outline: none;
+        }
+    }
+
+    & .prefix,
+    & .suffix {
+        padding: 0.5rem 0;
+    }
+
+    &:has(.input:invalid) {
+        outline: 2px solid var(--colorDanger);
+    }
+    &:has(.input:focus) {
+        outline: auto;
+    }
+}
+
+
+.error {
+    display: none;
+    color: var(--colorDanger);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.icon {
+    font-weight: bold;
+    width: 1rem;
+    height: 1rem;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--colorDanger);
+}

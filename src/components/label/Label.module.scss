@@ -1,0 +1,51 @@
+.label {
+    font-weight: bold;
+}
+
+.infoWrapper {
+    position: relative;
+}
+
+.info {
+    color: var(--colorInfo);
+    width: .75rem;
+    height: .75rem;
+    font-size: 0.6rem;
+    position: relative;
+    bottom: .5rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .75rem;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--colorInfo);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--colorInfo);
+        color: var(--colorWhite);
+
+        & ~ .tooltip {
+            display: block;
+        }
+    }
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: var(--colorInfo);
+    color: var(--colorWhite);
+    padding: .5rem;
+    border-radius: .25rem;
+    font-size: .8rem;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-weight: normal;
+    white-space: nowrap;
+    &.show {
+        display: block;
+    }
+}

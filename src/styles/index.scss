@@ -1,0 +1,19 @@
+html {
+    box-sizing: border-box;
+    outline-color: var(--colorPrimary);
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background-color: var(--colorWhite);
+    color: var(--colorBlack);
+}
+
+main {
+    padding: 1rem;
+}

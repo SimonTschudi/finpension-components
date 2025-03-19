@@ -1,0 +1,54 @@
+@keyframes fadeIn{
+    from {
+       opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// TODO add fadeOut animation with animation end event listener
+@keyframes fadeOut{
+    from {
+       opacity: 1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
+.dialog {
+    &::backdrop {
+        background-color: var(--colorTransparent-hover);
+        backdrop-filter: blur(5px);
+    }
+
+    &[open] {
+        animation: fadeIn 0.3s ease-in forwards;
+    }
+}
+
+.dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--colorBlack);
+    gap: 1rem;
+
+    & .close {
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+}
+
+.dialogContent {
+    padding: 1rem 0;
+}
+
+.dialogFooter {
+    display: flex;
+    padding-top: 1rem;
+    border-top: 1px solid var(--colorBlack);
+    justify-content: flex-end;
+    gap: 1rem;
+}
